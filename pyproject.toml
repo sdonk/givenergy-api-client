@@ -39,6 +39,8 @@ ipdb = "^0.13.13"
 rich = "^13.7.1"
 pytest-httpx = "^0.30.0"
 pytest-xdist = "^3.6.1"
+mkdocs = "^1.6.1"
+mkdocs-material = "^9.5.34"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
