@@ -1,1 +1,4 @@
 site_name: GivEnergy cloud API Python client
+site_url: https://sdonk.github.io/givenergy-api-client/
+theme:
+  name: material
