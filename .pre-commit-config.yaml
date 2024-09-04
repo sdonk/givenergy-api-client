@@ -1,0 +1,50 @@
+exclude: 'docs|node_modules|migrations|.git|.tox'
+default_stages: [commit]
+
+default_language_version:
+  python: python3.12
+
+repos:
+-   repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v2.3.0
+    hooks:
+    - id: check-yaml
+    - id: end-of-file-fixer
+    - id: trailing-whitespace
+    - id: check-toml
+    - id: debug-statements
+    - id: check-builtin-literals
+    - id: check-case-conflict
+    - id: detect-private-key
+
+-   repo: https://github.com/psf/black
+    rev: 24.8.0
+    hooks:
+    -   id: black
+        args: ["--config", "pyproject.toml"]
+
+- repo: https://github.com/PyCQA/isort
+  rev: 5.13.2
+  hooks:
+    - id: isort
+
+- repo: https://github.com/PyCQA/flake8
+  rev: 7.1.1
+  hooks:
+    - id: flake8
+
+- repo: local
+  hooks:
+    - id: mypy
+      name: mypy
+      language: python
+      entry: pipx run poetry run mypy
+      types: [python]
+      require_serial: true
+      verbose: true
+      args: ["--config-file", "pyproject.toml", "--follow-imports", "silent"]
+
+ci:
+  autoupdate_schedule: weekly
+  skip: []
+  submodules: false
