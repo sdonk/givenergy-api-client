@@ -1,4 +1,4 @@
-name: Tests
+name: Code quality
 on:
   push:
     branches: [ main ]
@@ -6,7 +6,7 @@ on:
     types: [ opened, synchronize ]
 
 jobs:
-  ci:
+  checks:
     strategy:
       fail-fast: false
       matrix:
@@ -32,5 +32,5 @@ jobs:
           key: venv-${{ hashFiles('poetry.lock') }}
       - name: Install the project dependencies
         run: poetry install --with dev
-      - name: Run tests   
-        run: poetry run pytest
+      - name: Run checks
+        run: poetry run pre-commit run --all-files --verbose

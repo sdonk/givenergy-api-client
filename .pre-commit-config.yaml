@@ -1,9 +1,6 @@
 exclude: 'docs|node_modules|migrations|.git|.tox'
 default_stages: [commit]
 
-default_language_version:
-  python: python3.12
-
 repos:
 -   repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v2.3.0
