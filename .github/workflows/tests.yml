@@ -23,9 +23,8 @@ jobs:
           python-version: ${{ matrix.python-version }}
 
       - name: Install poetry
-        uses: abatilo/actions-poetry@v2
-      - name: Setup a local virtual environment
         run: |
+          pip install -U poetry
           poetry config virtualenvs.create true --local
           poetry config virtualenvs.in-project true --local
 
@@ -40,11 +39,3 @@ jobs:
 
       - name: Run tests   
         run: poetry run pytest
-
-      - name: Upload results to Codecov
-        uses: codecov/codecov-action@v4
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          env_vars: OS,PYTHON
-          fail_ci_if_error: true
-          verbose: true
