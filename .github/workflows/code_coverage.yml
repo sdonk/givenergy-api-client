@@ -14,6 +14,9 @@ jobs:
         python-version: 3.12
     - name: Generate coverage report
       run: |
+        pip install poetry
+        poetry export --without-hashes --format=requirements.txt > requirements.txt
+        pip install -r requirements.txt
         pip install pytest pytest-cov pytest-httpx pytest-xdist
         pytest --cov=./ --cov-report=xml
     - name: Upload coverage to Codecov
