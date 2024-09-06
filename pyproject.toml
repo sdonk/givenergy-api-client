@@ -38,7 +38,6 @@ ipython = "^8.26.0"
 ipdb = "^0.13.13"
 rich = "^13.7.1"
 pytest-httpx = "^0.30.0"
-pytest-xdist = "^3.6.1"
 mkdocs = "^1.6.1"
 mkdocs-material = "^9.5.34"
 
@@ -49,7 +48,7 @@ build-backend = "poetry.core.masonry.api"
 
 # ==== pytest ====
 [tool.pytest.ini_options]
-addopts = "-n auto --verbose --cov --cov-report term-missing -- cov-context=test --cov-config=pyproject.toml --cov-append"
+addopts = "--verbose --cov --cov-report term-missing --cov-context=test --cov-config=pyproject.toml --cov-append"
 norecursedirs = [
     ".tox",
     ".git",
