@@ -49,7 +49,7 @@ build-backend = "poetry.core.masonry.api"
 
 # ==== pytest ====
 [tool.pytest.ini_options]
-addopts = "-n auto --verbose --tb=short --cov --cov-report term-missing"
+addopts = "-n auto --verbose --cov --cov-report term-missing -- cov-context=test --cov-config=pyproject.toml"
 norecursedirs = [
     ".tox",
     ".git",
@@ -66,6 +66,20 @@ norecursedirs = [
 line-length = 119
 target-version = ['py312']
 
+
+# ==== coverage ====
+[tool.coverage.run]
+branch = true
+omit = [
+    "*/tests/*"
+]
+
+
+[tool.coverage.report]
+ignore_errors = true
+exclude_lines = [
+    "pragma: no cover",
+]
 
 # ==== isort ====
 [tool.isort]
@@ -90,9 +104,13 @@ show_error_context = true
 
 
 # ==== pylint ====
-[tool.pylint.'MESSAGES CONTROL']
+[tool.pylint.messages_control]
 max-line-length = 119
 disable = """
     too-many-arguments,
-    not-callable
+    not-callable,
+    fixme
 """
+
+[tool.pylint.reports]
+output-format = "colorized"

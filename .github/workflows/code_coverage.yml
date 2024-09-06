@@ -18,7 +18,7 @@ jobs:
         poetry export --without-hashes --format=requirements.txt > requirements.txt
         pip install -r requirements.txt
         pip install pytest pytest-cov pytest-httpx pytest-xdist
-        pytest --cov=./ --cov-report=xml
+        pytest --cov=./ --cov-report=xml --cov-config=pyproject.toml
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v4
       with:
