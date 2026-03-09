@@ -1,4 +1,23 @@
-site_name: GivEnergy cloud API Python client
+site_name: GivEnergy API Client
 site_url: https://sdonk.github.io/givenergy-api-client/
+
 theme:
   name: material
+  features:
+    - content.code.copy
+    - content.tabs.link
+    - navigation.tabs
+    - navigation.sections
+    - search.highlight
+
+nav:
+  - Getting Started: index.md
+  - Resources:
+    - Account: account.md
+    - Inverter: inverter.md
+    - EMS: ems.md
+    - EV Charger: ev-charger.md
+    - Inverter Presets: inverter-presets.md
+  - Error Handling: error-handling.md
+  - Async Usage: async.md
+  - Advanced Topics: advanced.md

@@ -1,6 +1,5 @@
 import datetime as dt
 from enum import Enum
-from typing import List, Optional
 
 from pydantic import BaseModel, ConfigDict, PositiveFloat, PositiveInt
 
@@ -76,8 +75,8 @@ class ConnectionMeter(BaseModel):
 
 
 class Connections(BaseModel):
-    batteries: List[ConnectionBattery]
-    meters: List[ConnectionMeter]
+    batteries: list[ConnectionBattery]
+    meters: list[ConnectionMeter]
     model_config = ConfigDict(frozen=True)
 
 
@@ -91,7 +90,7 @@ class Inverter(BaseModel):
     warranty: Warranty
     firmware_version: FirmwareVersion
     connections: Connections
-    flags: List[Optional[str]]
+    flags: list[str | None]
 
     model_config = ConfigDict(frozen=True)
 
