@@ -1,8 +1,11 @@
 name: Documentation
 on:
   push:
-    branches:
-      - main
+    branches: [main]
+    paths:
+      - "docs/**"
+      - "mkdocs.yml"
+      - "uv.lock"
 
 permissions:
   contents: write
@@ -19,16 +22,14 @@ jobs:
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
 
-      - name: Install uv
+      - name: Set up Python and uv
         uses: astral-sh/setup-uv@v5
         with:
           enable-cache: true
-
-      - name: Set up Python
-        run: uv python install 3.12
+          python-version: "3.12"
 
       - name: Install dependencies
-        run: uv sync --all-groups
+        run: uv sync --all-groups --frozen
 
       - uses: actions/cache@v4
         with:

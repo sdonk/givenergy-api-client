@@ -1,9 +1,19 @@
 name: Code quality
 on:
   push:
-    branches: [ main ]
+    branches: [main]
+    paths:
+      - "**.py"
+      - "pyproject.toml"
+      - "uv.lock"
+      - ".pre-commit-config.yaml"
   pull_request:
-    types: [ opened, synchronize ]
+    types: [opened, synchronize]
+    paths:
+      - "**.py"
+      - "pyproject.toml"
+      - "uv.lock"
+      - ".pre-commit-config.yaml"
 
 jobs:
   checks:
@@ -12,16 +22,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install uv
+      - name: Set up Python and uv
         uses: astral-sh/setup-uv@v5
         with:
           enable-cache: true
-
-      - name: Set up Python
-        run: uv python install 3.12
+          python-version: "3.12"
 
       - name: Install dependencies
-        run: uv sync --all-groups
+        run: uv sync --all-groups --frozen
 
       - name: Run pre-commit checks
         run: uv run pre-commit run --all-files --verbose

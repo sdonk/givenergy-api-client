@@ -1,5 +1,17 @@
 name: Coverage
-on: [push]
+on:
+  push:
+    branches: [main]
+    paths:
+      - "**.py"
+      - "pyproject.toml"
+      - "uv.lock"
+  pull_request:
+    types: [opened, synchronize]
+    paths:
+      - "**.py"
+      - "pyproject.toml"
+      - "uv.lock"
 
 jobs:
   run:
@@ -11,16 +23,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install uv
+      - name: Set up Python and uv
         uses: astral-sh/setup-uv@v5
         with:
           enable-cache: true
-
-      - name: Set up Python
-        run: uv python install 3.12
+          python-version: "3.12"
 
       - name: Install dependencies
-        run: uv sync --all-groups
+        run: uv sync --all-groups --frozen
 
       - name: Generate coverage report
         run: uv run pytest --cov=givenergy_api_client --cov-report=xml
