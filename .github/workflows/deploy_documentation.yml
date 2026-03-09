@@ -6,6 +6,8 @@ on:
       - "docs/**"
       - "mkdocs.yml"
       - "uv.lock"
+      - "README.md"
+      - ".github/workflows/deploy_documentation.yml"
 
 permissions:
   contents: write

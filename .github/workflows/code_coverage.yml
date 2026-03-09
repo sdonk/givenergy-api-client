@@ -1,17 +1,19 @@
 name: Coverage
 on:
   push:
-    branches: [main]
+    branches: ["**"]
     paths:
       - "**.py"
       - "pyproject.toml"
       - "uv.lock"
+      - ".github/workflows/code_coverage.yml"
   pull_request:
-    types: [opened, synchronize]
+    types: [opened, synchronize, reopened]
     paths:
       - "**.py"
       - "pyproject.toml"
       - "uv.lock"
+      - ".github/workflows/code_coverage.yml"
 
 jobs:
   run:

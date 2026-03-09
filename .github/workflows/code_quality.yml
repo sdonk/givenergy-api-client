@@ -1,19 +1,21 @@
 name: Code quality
 on:
   push:
-    branches: [main]
+    branches: ["**"]
     paths:
       - "**.py"
       - "pyproject.toml"
       - "uv.lock"
       - ".pre-commit-config.yaml"
+      - ".github/workflows/code_quality.yml"
   pull_request:
-    types: [opened, synchronize]
+    types: [opened, synchronize, reopened]
     paths:
       - "**.py"
       - "pyproject.toml"
       - "uv.lock"
       - ".pre-commit-config.yaml"
+      - ".github/workflows/code_quality.yml"
 
 jobs:
   checks:
