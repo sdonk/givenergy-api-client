@@ -1,5 +1,5 @@
 [project]
-name = "givenergy-api-client"
+name = "givenergy"
 version = "0.1.0"
 description = "Python Client for Givenergy cloud API"
 readme = "README.md"
