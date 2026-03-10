@@ -33,7 +33,7 @@ jobs:
       id-token: write
     environment:
       name: pypi
-      url: https://pypi.org/project/givenergy-api-client/
+      url: https://pypi.org/project/givenergy/
 
     steps:
       - name: Download dist artifacts
